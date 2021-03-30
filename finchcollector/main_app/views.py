@@ -1,20 +1,20 @@
 from django.shortcuts import render
-from django.views.generic.view import CreateView, UpdateView, DeleteView
+from django.views.generic import CreateView, UpdateView, DeleteView
 from .models import Restaurant
 
 # Create your views here.
 # Add the following import
-# from django.http import HttpResponse
+from django.http import HttpResponse
 
-class RestaurantCreate(CreateView)
+class RestaurantCreate(CreateView):
   model = Restaurant
   fields = "__all__"
 
-class RestaurantUpdate(UpdateView)
+class RestaurantUpdate(UpdateView):
   model = Restaurant
   fields =["cuisine", "description", "capacity"]
 
-class RestaurantDelete(DeleteView)
+class RestaurantDelete(DeleteView):
   model = Restaurant
   success_url = '/restaurants/'
 
