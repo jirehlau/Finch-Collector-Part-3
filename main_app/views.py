@@ -1,23 +1,21 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import Restaurant
 
 # Create your views here.
 # Add the following import
 from django.http import HttpResponse
 
-# Add the Restaurants class & list and view function below the imports
-# class Restaurant:  # Note that parens are optional if not inheriting from another class
-  # def __init__(self, name, cuisine, description, capacity):
-  #   self.name = name
-  #   self.cuisine = cuisine
-  #   self.description = description
-  #   self.capacity = capacity
-
-# restaurants = [
-#   Restaurant('Best Japanese Noodles', 'Ramen', 'Patio only', 50),
-#   Restaurant('Kimchi FTW', 'Korean', 'Very spicy food', 100),
-#   Restaurant('Asian Sensation', 'Chinese', 'Quick service', 20)
-# ]
+def create_form(request):
+  return render(request,'create_form.html')
+# create part 2 - handle the form submission 
+def submit_create_form(request):
+  # put form data in database 
+  Restaurant.objects.create(
+    name = request.POST['name'],
+    age=request.POST['age'],
+    cuisine=request.POST['cuisine'],
+    capacity=request.POST['capacity'],
+  )
 
 # Define the home view
 def home(request):
