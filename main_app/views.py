@@ -5,8 +5,10 @@ from .models import Restaurant
 # Add the following import
 from django.http import HttpResponse
 
+# FORM CREATION 
 def create_form(request):
   return render(request,'create_form.html')
+
 # create part 2 - handle the form submission 
 def submit_create_form(request):
   # put form data in database 
@@ -16,6 +18,20 @@ def submit_create_form(request):
     cuisine=request.POST['cuisine'],
     capacity=request.POST['capacity'],
   )
+  return redirect('/restaurants')
+
+# FORM EDITS 
+def edit_form(request, cat_id):
+  r = Restaurant.objects.get(id=r_id)
+  return render(request, 'edit_form.html', {'r': r,})
+
+def submit_update_form(request, r_id):
+  this_r = Restaurant.objects.get(id=r_id)
+  this_r.name = request.POST['name']
+  this_r.cuisine = request.POST['cuisine']
+  this_r.description = request.POST['description']
+  this_r.capacity= request.POST['capacity']
+  this_r.save()  
   return redirect('/restaurants')
 
 # Define the home view
