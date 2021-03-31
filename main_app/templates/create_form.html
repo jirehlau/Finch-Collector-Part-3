@@ -2,7 +2,7 @@
 
 {% block content %}
 <form method="POST" action="/restaurants/submit_create_form">
-    % csrf_token %
+    {% csrf_token %}
     Name: <input name="name" />
     Cuisine: <input name="cuisine" />
     Description: <input name="description" />

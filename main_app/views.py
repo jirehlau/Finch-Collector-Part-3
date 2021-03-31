@@ -16,6 +16,7 @@ def submit_create_form(request):
     cuisine=request.POST['cuisine'],
     capacity=request.POST['capacity'],
   )
+  return redirect('/restaurants')
 
 # Define the home view
 def home(request):
