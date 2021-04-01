@@ -21,7 +21,7 @@ def submit_create_form(request):
   return redirect('/restaurants')
 
 # FORM EDITS 
-def edit_form(request, cat_id):
+def edit_form(request, r_id):
   r = Restaurant.objects.get(id=r_id)
   return render(request, 'edit_form.html', {'r': r,})
 
