@@ -5,6 +5,12 @@ from .models import Restaurant
 # Add the following import
 from django.http import HttpResponse
 
+def delete(request, r_id):
+  # find the cat with this id in the database and delete it
+  r = Restaurant.objects.get(id=r_id)
+  r.delete()
+  return redirect('/restaurants')
+
 # FORM CREATION 
 def create_form(request):
   return render(request,'create_form.html')
@@ -14,7 +20,7 @@ def submit_create_form(request):
   # put form data in database 
   Restaurant.objects.create(
     name = request.POST['name'],
-    age=request.POST['age'],
+    description=request.POST['description'],
     cuisine=request.POST['cuisine'],
     capacity=request.POST['capacity'],
   )

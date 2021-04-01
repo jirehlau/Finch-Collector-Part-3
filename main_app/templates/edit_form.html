@@ -1,11 +1,13 @@
-{% block content %}
+{% extends 'base.html' %}
 
+{% block content %}
 <form method="POST"
 action="restaurants/{{ r.id }}/submit_update_form/">
-    {%csrf %}
+    {% csrf_token %}
     Name: <input name="name" placeholder="{{ r.name }}" />
+    Cuisine: <input name="cuisine" />
     Description: <input name="description" />
-    Age: <input type="number" name="age" />
-    Breed: <input name="breed" />
+    Capacity: <input name="Capacity" />
     <button>Update restaurants</button>
 </form>
+{% endblock %}
