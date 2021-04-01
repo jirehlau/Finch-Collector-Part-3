@@ -1,0 +1,11 @@
+{% block content %}
+
+<form method="POST"
+action="restaurants/{{ r.id }}/submit_update_form/">
+    {%csrf %}
+    Name: <input name="name" placeholder="{{ r.name }}" />
+    Description: <input name="description" />
+    Age: <input type="number" name="age" />
+    Breed: <input name="breed" />
+    <button>Update restaurants</button>
+</form>
